@@ -20,10 +20,16 @@ yarn dev
 ### backend environment
 ```
 # /root
-cd backend # run these in /root/backend
 
-# /root/backend
-python -m venv venv
+# Entering venv
+python -m venv venv # if there is no venv
+# if in bash
+source <venv>/Scripts/activate
+# if in powershell
+<venv>\Scripts\Activate.ps1
+
+# Exiting venv
+deactivate
 
 # Run before adding any packages!!
 pip install -r requirements.txt
