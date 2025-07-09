@@ -2,7 +2,7 @@
   description = "dev setup for nix";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -13,7 +13,7 @@
       in {
         devShells.default = pkgs.mkShell {
           buildInputs = [
-            pkgs.nodejs_20
+            pkgs.nodejs_22
             pkgs.yarn
             pkgs.git
           ];
