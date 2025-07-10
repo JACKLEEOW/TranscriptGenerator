@@ -6,7 +6,7 @@ function Header() {
     
     
     return (
-        <div className = "text-center mb-16">
+        <div className = "text-center mb-16 font-default">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mb-6">
             <FileText className="w-8 h-8 text-white" />
             </div>
