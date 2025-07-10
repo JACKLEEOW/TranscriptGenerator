@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&display=swap");
 @import 'tailwindcss';
 
 @theme {
@@ -5,4 +6,5 @@
     --color-violet: #71677C;
     --color-dun: #E2D2B6;
 
+    --font-default: "Atkinson Hyperlegible Mono", sans-serif;
 }
