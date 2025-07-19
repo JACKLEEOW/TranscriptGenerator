@@ -1,5 +1,7 @@
 import openai
-
+from fastapi import FASTAPI, UploadFile, File, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 
 API_KEY = 'enter api key here '
 
