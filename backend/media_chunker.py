@@ -1,6 +1,6 @@
 from pydub import AudioSegment 
 
-# This is for if the video length > 25 minutes. We have to chunk the audio file into smaller parts.
+# This is for if the video file > 25 MBS. We have to chunk the audio file into smaller parts.
 # For this, we will use pydub to split the audio file into smaller chunks.
 
 audio_file_path = "" # pass a variable here
