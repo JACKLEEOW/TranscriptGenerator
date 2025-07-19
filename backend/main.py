@@ -17,7 +17,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+os.makedirs("uploads", exist_ok=True)
 @app.get("/")
 async def root():
     return {"message": "Welcome to the Transcript Generator API!"}
