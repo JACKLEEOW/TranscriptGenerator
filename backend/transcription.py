@@ -1,22 +1,24 @@
-import openai
+from openai import OpenAI
 import os
-from fastapi import FASTAPI, UploadFile, File, HTTPException
+from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
+from dotenv import load_dotenv
 
+load_dotenv()
+api_key=os.getenv("OPENAI_API_KEY")
 
-API_KEY = os.getenv("OPEN_API_KEY")
+model_id = 'gpt-4o-mini-transcribe'
 
-model_id = 'whisper-1'
+client = OpenAI()
 
-media_file_path = "pass the media file path here"
+media_file_path = 'backend/tell_may_i_said.mp3'
 
 media_file = open(media_file_path, "rb")
 
 #can also translate media files by using translate instead of transcribe
 # response = openai.Audio.translate 
-response = openai.Audio.transcribe(
-    api_key = API_KEY,
+response = client.audio.transcriptions.create(
     model = model_id,
     file = media_file,
     response_format='text' # json, text, srt, or vtt
