@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { div } from 'framer-motion/client';
 
 function FileForm() {
     const [file, setFile] = useState(null);
