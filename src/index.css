@@ -3,9 +3,12 @@
 @import "tailwindcss/utilities";
 
 @theme {
-    --color-site: #0E050F;
-    --color-violet: #71677C;
-    --color-dun: #E2D2B6;
+    /* oklch(0.0353 0.025 265) */
+    --color-site: #0A0A0A;
 
+    /* oklch(0.1 0.01 265) */
+    --color-element-bg: #121212;
+
+    --color-element-text: #eeeeee;
     --font-default: "Oswald", sans-serif;
 }

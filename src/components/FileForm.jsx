@@ -1,3 +1,4 @@
+import { div } from 'framer-motion/client';
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 
@@ -45,17 +46,18 @@ function FileForm() {
     });
 
     return (
-        <div className="">
-            <div className="border-dun border-2 rounded-xl bg-dun w-64 text-center m-auto">
-                <div {...getRootProps({className: 'dropzone h-24 m-6'})}>
+        <div className='max-w-md m-auto px-6 md:max-w-xl'>
+            <div className="p-4 bg-element-bg rounded-xl flex-col text-element-text text-center">
+                <div {...getRootProps({className: 'dropzone h-20'})}>
                     <input {...getInputProps()} />
                     {isDragAccept && (<p className='cursor-default'>:D</p>)}
                     
                     {!isDragActive && (<p className='cursor-default'>Upload your video/audio file here</p>)}
+                    <br />
+                    {isDragReject && (<p className='text-element-text'>Invalid file format!</p>)}
+                    {file && (<p className='text-element-text'>File was successfully uploaded!</p>)}
                 </div>
             </div>
-            {isDragReject && (<p className='text-white'>Invalid file format!</p>)}
-            { file && (<p className='text-white'>{file.name} was uploaded</p>)}
         </div>
     );
 }
