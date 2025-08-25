@@ -4,7 +4,9 @@ import { useDropzone } from 'react-dropzone';
 
 function FileForm() {
     const [file, setFile] = useState(null);
-
+    const [transcription, setTranscription] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    
     // This is gross code i think
     const onDrop = useCallback(async (acceptedFiles) => {
         const file = acceptedFiles[0];
