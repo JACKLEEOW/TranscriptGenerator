@@ -7,7 +7,7 @@ function Header() {
     
     return (
         <div className = "text-center m-auto p-6 max-w-md md:max-w-xl">
-            <FileText className="w-8 h-8 text-white inline-flex items-center m-4"/>
+            <FileText className="w-16 h-16 text-white inline-flex items-center m-4"/>
             <h1 
                 className = "text-3xl text-white font-bold m-4">Transcript Generator
 

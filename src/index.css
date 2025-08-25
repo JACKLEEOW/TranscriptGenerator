@@ -3,12 +3,16 @@
 @import "tailwindcss/utilities";
 
 @theme {
-    /* oklch(0.0353 0.025 265) */
-    --color-site: #0A0A0A;
 
-    /* oklch(0.1 0.01 265) */
+    --color-site: #0A0A0A;
     --color-element-bg: #121212;
 
     --color-element-text: #eeeeee;
     --font-default: "Oswald", sans-serif;
+}
+
+@layer utilities {
+    .scrollbar::-webkit-scrollbar {
+        width: 0px;
+    }
 }

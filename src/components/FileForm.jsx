@@ -1,6 +1,7 @@
 import { div } from 'framer-motion/client';
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
+import Output from './Output.jsx'
 
 function FileForm() {
     const [file, setFile] = useState(null);
@@ -70,6 +71,8 @@ function FileForm() {
                     {file && (<p className='text-element-text'>File was successfully uploaded!</p>)}
                 </div>
             </div>
+
+            {transcription && (<Output text={transcription} />)}
         </div>
     );
 }
