@@ -10,24 +10,33 @@ function FileForm() {
         const file = acceptedFiles[0];
         setFile(file.name)
         console.log('Attempting upload: ', file, )
+        setIsLoading(true);
+
+        setTranscription(''); // initialize transcription
 
         const formData = new FormData();
         formData.append('uploaded_file', file)
 
         try {
-            const endpoint = 'http://localhost:8000/upload/'
+            const endpoint = 'http://localhost:8000/transcribe/'
             const response = await fetch(endpoint, {
                 method: 'POST',
                 body: formData
             });
+            const result = await response.json();
 
             if (response.ok) {
                 console.log('File uploaded sucessfully');
+                setTranscription(result.transcription);
+
             } else {
                 console.error('File failed to upload');
             }
         } catch(error) {
             console.error(error);
+        }
+        finally {
+            setIsLoading(false);
         }
     }, []);
 
@@ -42,9 +51,10 @@ function FileForm() {
             'audio/*' : ['.mp3', '.mpga', '.m4a', '.ogg', '.webm'],
             'video/*' : ['.mp4', '.mpeg', '.ogg', '.wav', '.webm']
         },
-        onDrop
+        onDrop,
+        disabled: isLoading
     });
-
+    //have to add display of transcription
     return (
         <div className='max-w-md m-auto px-6 md:max-w-xl'>
             <div className="p-4 bg-element-bg rounded-xl flex-col text-element-text text-center">

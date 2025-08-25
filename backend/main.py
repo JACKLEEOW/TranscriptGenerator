@@ -31,3 +31,32 @@ async def upload_file(uploaded_file: UploadFile):
     with open(save_to, "wb") as f:
         f.write(contents)
     return {"filename": uploaded_file.filename}
+
+@app.post("/transcribe/")
+async def transcribe_audio(uploaded_file: UploadFile = File(...)):
+    """endpoint to transcribe an uploaded audio file using Whisper."""
+    if not os.getenv("OPENAI_API_KEY"):
+        raise HTTPException(status_code=500, detail="OpenAI API key not set in environment variables.")
+    file_content = await uploaded_file.read()
+
+    file_path = UPLOAD_DIR / uploaded_file.filename
+    with open(file_path, "wb") as f:
+        f.write(file_content)
+    
+    try:
+        with open(file_path, "rb") as audio_file:
+            transcript = client.audio.transcriptions.create(
+                model = "whisper-1",
+                file = audio_file,
+            )
+        os.unlink(file_path)  # Clean up the uploaded file
+        return {"success": True,
+                "filename": uploaded_file.filename,
+                "transcription": transcript.text,
+                }
+    except Exception as e:
+        if os.path.exists(file_path):
+            os.unlink(file_path)  # Clean up the uploaded file
+        raise HTTPException(status_code=500, detail=f"TRANSCRIPTION FAILED: {str(e)}")
+    
+    #can add auto run uvicorn here if needed
